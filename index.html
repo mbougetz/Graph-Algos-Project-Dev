@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Algorithms Visualizer</title>
+</head>
+<body>
+    <h1>Welcome to my graph algorithms visualizer!</h1>
+    <script src="script.js"></script>
+</body>
+
+<p>Please select the type of graph:</p>
+<input type="radio" id="weighted" name="weight" value="Weighted">
+<label for="weighted">Weighted</label>
+<input type="radio" id="unweighted" name="weight" value="Unweighted" checked="checked">
+<label for="css">Unweighted</label>
+
+<br>
+
+<input type="radio" id="directed" name="directionality" value="Directed">
+<label for="directed">Directed</label>
+<input type="radio" id="undirected" name="directionality" value="Undirected" checked="checked">
+<label for="undirected">Undirected</label>
+
+<br> 
+
+<p>Select algorithm to run:</p>
+<input type="radio" id="bfs" name="curr_algo" value="BFS" checked="checked">
+<label for="bfs">BFS</label><br>
+<input type="radio" id="dfs" name="curr_algo" value="DFS">
+<label for="dfs">DFS</label><br>
+<input type="radio" id="dijkstra" name="curr_algo" value="Dijkstra's Algorithm">
+<label for="dijkstra">Dijkstra's Algorithm</label><br>
+<input type="radio" id="find_cycles" name="curr_algo" value="Find Cycles">
+<label for="find_cycles">Find Cycles</label><br>
+<input type="radio" id="find_scc" name="curr_algo" value="Find SCCs">
+<label for="find_scc">Find SCCs</label><br>
+
+<br>
+
+<p>Select tool:</p>
+<input type="radio" id="node_move" name="curr_tool" value="Move Node">
+<label for="node_move">Move Node</label><br>
+<input type="radio" id="node_create" name="curr_tool" value="Create Node" checked="checked">
+<label for="node_create">Create Node</label><br>
+<input type="radio" id="edge_create" name="curr_tool" value="Create Edge">
+<label for="edge_create">Create Edge</label><br>
+<input type="radio" id="edit_value" name="curr_tool" value="Edit Values">
+<label for="edit_value">Edit Values</label><br>
+<input type="radio" id="erase" name="curr_tool" value="Eraser Tool">
+<label for="erase">Eraser Tool</label><br>
+<input type="radio" id="run_algo" name="curr_tool" value="Run Selected Algorithm at Selected Node">
+<label for="run_algo">Run Selected Algorithm at Node</label><br>
+
+<br>
+<button id="clear_graph">Clear Graph</button>
+<br>
+<p>Node size:</p>
+<div class="slidecontainer">
+    <input type="range" min="10" max="100" value="25" class="slider" id="myRange">
+</div>
+
+<br>
+<!-- remember to have this correspond to device specs -->
+<canvas id="graphCanvas" width="1800" height="800" style="border:1px solid #000000;">
+</canvas> 
+
+</html>
