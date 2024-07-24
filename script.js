@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let currTool = getCurrTool();
 
         //Node creation tool functionality
-        if(currTool == "node_create"){
+        if(currTool == "node_create"){ 
             const x = click_x;
             const y = click_y;
             
@@ -177,6 +177,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
             rerender();
     
+            //Run algorithm functionality!!!!
+        }   else if (currTool == "run_algo"){
+            let start_node = coordIsNode(click_x, click_y);
+            let curr_algo = getCurrAlgo();
+
+            //!!!!!!! Remember that some algos don't need a start node!!!!!!!!!
+            if(start_node != false){
+                //console.log("Running algo at node " + start_node.id);
+
+                if(curr_algo == "bfs"){
+                    bfs(start_node, nodes, edges);
+                } else if (curr_algo == "dfs"){
+                    dfs(start_node, nodes, edges);
+                }
+            }
+
         }
     }
 
