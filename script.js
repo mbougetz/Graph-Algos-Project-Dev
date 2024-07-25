@@ -372,8 +372,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     input.name = "edge_label";
                     input.value = edge.edge_weight;
                     input.style.position = 'absolute';
-                    input.style.left = (mid_x) + "px";
-                    input.style.top = (mid_y) + 575 + "px"; //!!!!! Magic number bad!!!! Get offset from page itself!
+                    input.style.left = (mid_x + 8) + "px";
+                    input.style.top = (mid_y) + 325 + "px"; //!!!!! Magic number bad!!!! Get offset from page itself!
+                    input.style.width = (1.75 * node_scale) + "px"; //!!!! Temporary
 
                     //Changes the node name to the current textbox value when the enter key is pressed
                     input.addEventListener("keydown", function(event) {
