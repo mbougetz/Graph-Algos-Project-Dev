@@ -36,3 +36,17 @@ function containsNode(arr, ele){
 
     return found;
 }
+
+//Formats and prints the output of any algorithm that returns a graph traversal
+function formatTraversal(output_nodes, start_node, algo_name){
+    let output_box = document.getElementById("output_box");
+
+    let formatted_text = "Order of traversal while running " + algo_name + " on node " + getNodeName(start_node) + ":<br>";
+    for(i = 0; i < output_nodes.length; i++){
+        formatted_text += getNodeName(output_nodes[i]);
+        if(i != output_nodes.length - 1) formatted_text += " => ";
+    }
+
+    output_box.innerHTML = formatted_text;
+
+}

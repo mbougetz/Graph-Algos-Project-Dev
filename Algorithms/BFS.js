@@ -26,8 +26,11 @@ function bfs(start_node, nodes, edges){
 
     }
 
-    console.log(visited);
+    //console.log(visited);
 
-    return visited;
+    formatTraversal(visited, start_node, "Breadth-First Search");
+
+    //return visited;
 }
+
 

@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     let mid_x = (edges[i].node1.x + edges[i].node2.x)/2;
                     let mid_y = (edges[i].node1.y + edges[i].node2.y)/2;
 
+                    //!!!!!!!! Make less ugly
                     if((click_x - mid_x) * (click_x - mid_x) + (click_y - mid_y) * (click_y - mid_y) <= edge_zone_scale * edge_zone_scale){
                         console.log("Deleted edge between " + edges[i].node1.id + " and " + edges[i].node2.id);
                         edges.splice(i, 1);
@@ -336,8 +337,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(node.name == "") input.value = node.id;
                 else input.value = node.name;
                 input.style.position = 'absolute';
-                input.style.left = (node.x - node_scale) + "px";
-                input.style.top = (node.y) + 575 + "px"; //!!!!! Magic number bad!!!! Get offset from page itself!
+                input.style.left = (node.x - node_scale + 8) + "px";
+                input.style.top = (node.y) + 325 + "px"; //!!!!! Magic number bad!!!! Get offset from page itself!
                 input.style.width = (1.75 * node_scale) + "px"; 
 
                 //Changes the node name to the current textbox value when the enter key is pressed

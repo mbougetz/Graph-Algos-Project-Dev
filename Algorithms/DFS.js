@@ -28,8 +28,10 @@ function dfs(start_node, nodes, edges){
 
     }
 
-    console.log(order);
+    //console.log(order);
 
-    return order;
+    formatTraversal(order, start_node, "Depth-First Search");
+
+    //return order;
 }
 
