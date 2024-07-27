@@ -7,16 +7,17 @@ function getNodeName(node){
 }
 
 //Returns an array of all neighbors of a specified node
-function getNeighbors(start_node, edges){
+function getNeighbors(start_node, edges, graph_direction){
     let neighbors = [];
 
     edges.forEach(edge => {
         //console.log("Checking if node " + start_node.id + " exists on edge from node " + edge.node1.id + " to " + edge.node2.id);
+        //!!!!!! Maybe undefined bug is caused by this not accounting for self-edges????
         if(start_node.id == edge.node1.id){
             if(!containsNode(neighbors, edge.node2)){
                 neighbors.push(edge.node2);
             }
-        } else if(start_node.id == edge.node2.id){
+        } else if(start_node.id == edge.node2.id && graph_direction == "undirected"){
             if(!containsNode(neighbors, edge.node1)){
                 neighbors.push(edge.node1);
             }
@@ -40,6 +41,8 @@ function containsNode(arr, ele){
 //Formats and prints the output of any algorithm that returns a graph traversal
 function formatTraversal(output_nodes, start_node, algo_name){
     let output_box = document.getElementById("output_box");
+
+    console.log("" + output_nodes.length);
 
     let formatted_text = "Order of traversal while running " + algo_name + " on node " + getNodeName(start_node) + ":<br>";
     for(i = 0; i < output_nodes.length; i++){

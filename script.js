@@ -188,9 +188,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 //console.log("Running algo at node " + start_node.id);
 
                 if(curr_algo == "bfs"){
-                    bfs(start_node, nodes, edges);
+                    bfs(start_node, nodes, edges, getDirectionality());
                 } else if (curr_algo == "dfs"){
-                    dfs(start_node, nodes, edges);
+                    dfs(start_node, nodes, edges, getDirectionality());
                 }
             }
 
