@@ -17,6 +17,8 @@ function getNeighbors(start_node, edges, graph_direction){
             if(!containsNode(neighbors, edge.node2)){
                 neighbors.push(edge.node2);
             }
+
+        //Marks edge as a neighbor if contanis the start_node AND graph is undirected
         } else if(start_node.id == edge.node2.id && graph_direction == "undirected"){
             if(!containsNode(neighbors, edge.node1)){
                 neighbors.push(edge.node1);
@@ -42,7 +44,7 @@ function containsNode(arr, ele){
 function formatTraversal(output_nodes, start_node, algo_name){
     let output_box = document.getElementById("output_box");
 
-    console.log("" + output_nodes.length);
+    //console.log("" + output_nodes.length);
 
     let formatted_text = "Order of traversal while running " + algo_name + " on node " + getNodeName(start_node) + ":<br>";
     for(i = 0; i < output_nodes.length; i++){

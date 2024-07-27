@@ -1,4 +1,4 @@
-function dfs(start_node, nodes, edges){
+function dfs(start_node, nodes, edges, graph_direction){
     console.log("DFS called at node " + start_node.id);
     //Stores previously visited nodes in traversal order
     let visited = []; 
@@ -17,7 +17,7 @@ function dfs(start_node, nodes, edges){
         let curr_node = stack.pop();
         order.push(curr_node);
 
-        let curr_node_neighbors = getNeighbors(curr_node, edges);
+        let curr_node_neighbors = getNeighbors(curr_node, edges, graph_direction);
         curr_node_neighbors.forEach(neighbor => {
             if(!containsNode(visited, neighbor)){
                 visited.push(neighbor);

@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let nodes = [];
     let edges = [];
 
+    let default_edge_weight = 1;
+
     //Sets initial value for node IDs to be 1
     let curr_node_id = 1;
 
@@ -191,6 +193,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     bfs(start_node, nodes, edges, getDirectionality());
                 } else if (curr_algo == "dfs"){
                     dfs(start_node, nodes, edges, getDirectionality());
+                } else if(curr_algo == "dijkstra"){
+                    dijkstra(start_node, nodes, edges, getDirectionality());
                 }
             }
 
@@ -224,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //Prevents duplicate edges being added (directed)
         if(!edge_duplicate){
-            let edge_to_add = {node1, node2, edge_weight:0}
+            let edge_to_add = {node1, node2, edge_weight:default_edge_weight}
             edges.push(edge_to_add);
             console.log("Added edge between " + node1.id + " and " + node2.id);
             rerender(); // Redraw edges if not a duplicate
