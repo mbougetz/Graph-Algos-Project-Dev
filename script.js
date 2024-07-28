@@ -519,7 +519,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('beforeunload', function (event) {
         let curr_graph = {stored_nodes:nodes, stored_edges:edges};
         window.localStorage.setItem("curr_graph", JSON.stringify(curr_graph));
-        
+
     });
 
     //Retrieve the previously stored graph from localstorage and load into the current graph
@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let stored_graph_string = window.localStorage.getItem("curr_graph");
 
         //Retrieve values from localstorage IF those values have been stored previously
-        if(stored_graph_string || stored_graph_string.length > 0){
+        if(stored_graph_string != null || stored_graph_string.length > 0){
             let stored_graph = JSON.parse(stored_graph_string);
 
             nodes = stored_graph.stored_nodes;
