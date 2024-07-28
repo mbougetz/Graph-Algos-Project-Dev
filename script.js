@@ -524,16 +524,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Retrieve the previously stored graph from localstorage and load into the current graph
     function retrieveStoredGraph(){
-        let stored_graph_string = window.localStorage.getItem("curr_graph");
-
-        //Retrieve values from localstorage IF those values have been stored previously
-        if(stored_graph_string != null || stored_graph_string.length > 0){
+        if(window.localStorage.getItem("curr_graph") != null){
+            let stored_graph_string = window.localStorage.getItem("curr_graph");
             let stored_graph = JSON.parse(stored_graph_string);
 
             nodes = stored_graph.stored_nodes;
             edges = stored_graph.stored_edges;
             rerender();
+
         }
+        
     }
 
 });
