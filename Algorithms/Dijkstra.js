@@ -1,6 +1,7 @@
 //Define an infinite distance to be the maximum safe integer
 const INFINITY = Number.MAX_SAFE_INTEGER;
 
+//Run dijkstra's shortest path alogithm on the current graph
 function dijkstra(start_node, nodes, edges, graph_direction){
     //Stores distances from start_node to every other node in the graph
     let distances = new Map();
@@ -43,6 +44,7 @@ function dijkstra(start_node, nodes, edges, graph_direction){
 
 //Formats and prints the resultant output
 function formatDijkstraOutput(start_node, distances){
+    //Get reference to output text box
     let output_box = document.getElementById("output_box");
 
     //First sort distances ascending
@@ -52,12 +54,14 @@ function formatDijkstraOutput(start_node, distances){
     let formatted_text = "Results of running Dijkstra's shortest path algorithm starting from node " + getNodeName(start_node) + ":<br>";
     sorted_distances.forEach((dist, node) => {
         //If a node still has an unchanged distance of INFINITY, mark as unreachable
-        if(dist == INFINITY) dist = "Unreachable"
+        if(dist == INFINITY) dist = "Unreachable";
 
-        formatted_text += "Distance from node " + getNodeName(start_node) + " to node " + getNodeName(node) + ": " + dist + "<br>";
+        //Formats distance for each node
+        //ignores the starting node as start_node will always have a distance from itself of 0
+        if(start_node.id != node.id) formatted_text += "Distance from node " + getNodeName(start_node) + " to node " + getNodeName(node) + ": " + dist + "<br>";
     });
 
-    //Place text into output box
+    //Place formatted text into output box
     output_box.innerHTML = formatted_text;
 }
 

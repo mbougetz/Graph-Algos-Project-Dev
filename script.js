@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
     //Tracks if a node is currently being moved
     let global_selected_node = false;
 
+    //Retrieved the previously stored graph from localstorage if it exists
+    retrieveStoredGraph();
+
     //To do list:
     //Start implementing algos all in probably separate js files.
  
@@ -512,12 +515,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initialize your application or call initial setup functions
-    // For example:
-    function init() {
-        // Perform any initial setup tasks
-        // Start your application logic here
+    //Store current graph in localstorage
+    window.addEventListener('beforeunload', function (event) {
+        let curr_graph = {stored_nodes:nodes, stored_edges:edges};
+        window.localStorage.setItem("curr_graph", JSON.stringify(curr_graph));
+        
+    });
+
+    //Retrieve the previously stored graph from localstorage and load into the current graph
+    function retrieveStoredGraph(){
+        let stored_graph_string = window.localStorage.getItem("curr_graph");
+
+        //Retrieve values from localstorage IF those values have been stored previously
+        if(stored_graph_string || stored_graph_string.length > 0){
+            let stored_graph = JSON.parse(stored_graph_string);
+
+            nodes = stored_graph.stored_nodes;
+            edges = stored_graph.stored_edges;
+            rerender();
+        }
     }
 
-    init(); // Call initialization function
 });
