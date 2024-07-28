@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Retrieve the previously stored graph from localstorage and load into the current graph
     function retrieveStoredGraph(){
-        if(window.localStorage.getItem("curr_graph") != null){
+        if(window.localStorage.getItem("curr_graph") !== null){
             let stored_graph_string = window.localStorage.getItem("curr_graph");
             let stored_graph = JSON.parse(stored_graph_string);
 
