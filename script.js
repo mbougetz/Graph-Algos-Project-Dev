@@ -27,20 +27,28 @@ document.addEventListener('DOMContentLoaded', function() {
     retrieveStoredGraph();
 
     //To do list:
-    //Start implementing algos all in probably separate js files.
- 
-    //Color picker for nodes/edges/edge weights/direction triangles???
+    //Get rid of magic numbers/vals, have more constants defined
     
     //Add slider to control scale (increase or decrease distance between all nodes linearly)
-
-    //Consider what should happen when trying to run an algo that doesn't map the type of the current graph.
-
-    ///Figure out how to store and recall current graphs in cookies so it saves across page refresh!
-    //Just need to store nodes/edges array
 
     //What to do with self-edges??? disallow or visually render a little loop?
 
     //!!Back edges have their edit weight box hidden by the first edge, also their directional arrows overlap
+
+    //Have some default example graphs that can be loaded from a dropdown menu
+
+    //Clears current graph completely
+    function clearGraph(){
+        nodes = [];
+        edges = [];
+        curr_node_id = 1;
+        rerender();
+    }
+
+    //Link functionality to Clear Graph button
+    document.getElementById("clear_graph").addEventListener("click", function (event){
+        clearGraph();
+    });
 
     
     //Handle the rendering of "live" elements, like nodes currently being moved and edges currently being created
@@ -103,19 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
         global_selected_node = false;
     });
 
-    //Clears current graph completely
-    function clearGraph(){
-        nodes = [];
-        edges = [];
-        curr_node_id = 1;
-        rerender();
-    }
-
-    //Link functionality to Clear Graph button
-    document.getElementById("clear_graph").addEventListener("click", function (event){
-        clearGraph();
-    });
-
     function onClick(click_x, click_y){
         let currTool = getCurrTool();
 
@@ -134,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
             nodes.push(new_node);
     
             rerender(); // Redraw nodes on canvas
+
 
         //Erase tool functionality
         } else if(currTool == "erase"){
@@ -198,6 +194,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     dfs(start_node, nodes, edges, getDirectionality());
                 } else if(curr_algo == "dijkstra"){
                     dijkstra(start_node, nodes, edges, getDirectionality());
+                } else if(curr_algo == "find_cycles"){
+                    findCycles(nodes, edges, getDirectionality());
                 }
             }
 
@@ -530,10 +528,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
             nodes = stored_graph.stored_nodes;
             edges = stored_graph.stored_edges;
+
+            //Reset the current node id to reflect the retrieved graph
+            let max_id = 0;
+            nodes.forEach(node => {
+                if(node.id > max_id) max_id = node.id;
+            });
+
+            curr_node_id = max_id + 1;
+
+
             rerender();
 
         }
-        
     }
-
 });
